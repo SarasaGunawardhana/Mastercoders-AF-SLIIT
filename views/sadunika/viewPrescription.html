@@ -1,0 +1,54 @@
+<div ng-controller="prescriptionController" id="wrapper"  >
+  <div ng-include="'partials/navigation_Chief.html'"></div>
+  <!--<link href="/css/fresh-bootstrap-table.css" rel="stylesheet" /> -->
+  <br>
+  <br>
+
+
+  <div class="container" >
+    <div class=" well table-responsive">
+      <div style="width:40%;padding-bottom:30px;">
+        <div class="input-group">
+          <span class="input-group-addon"><span class="fa fa-search" ></span></span>
+      <input type="text" id="prescriptionSearch" placeholder="Search by Patient ID" class="form-control" data-ng-model="search.patientid">
+        </div>
+
+      </div>
+      <table id="myTable" class="display table" width="100%" >
+        <thead>
+          <tr>
+
+            <th>Patient ID</th>
+            <th>Drug Category</th>
+            <th>Drug Discription</th>
+            <th>Dosage</th>
+            <th>Frequency</th>
+            <th>Period</th>
+            <th>Quantity</th>
+            <th>Date</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat = " prescription in prescriptions | filter:search " class="success">
+
+            <td>{{prescription.patientid}}</td>
+            <td>{{prescription.category}}</td>
+            <td>{{prescription.discription}}</td>
+            <td>{{prescription.dosage}}</td>
+            <td>{{prescription.frequency}}</td>
+            <td>{{prescription.period}}</td>
+            <td>{{prescription.prescriptionquantity}}</td>
+            <td>{{prescription.prescriptiondate}}</td>
+
+            <td><a href="#!/prescriptionDetails"><button class="btn btn-success" type="button">View</button></a>  &nbsp;&nbsp;
+          </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

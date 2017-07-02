@@ -1,0 +1,69 @@
+<div ng-controller="viewBatchController" id="wrapper"  >
+  <div ng-include="'partials/navigation_Chief.html'"></div>
+  <!--<link href="/css/fresh-bootstrap-table.css" rel="stylesheet" /> -->
+  <br>
+  <br>
+
+  <div class="container" >
+    <div class=" well table-responsive">
+      <div style="width:40%;padding-bottom:30px;">
+        <div class="input-group">
+          <span class="input-group-addon"><span class="fa fa-search" ></span>Drug name</span>
+         <input type="text" ng-model="search.dname">
+
+        </div>
+        <br>
+
+        <div class="input-group">
+          <span class="input-group-addon"><span class="fa fa-search" ></span>Drug category</span>
+          <input type="text" ng-model="search.dcat">
+
+        </div>
+
+        <br>
+
+        <div class="input-group">
+          <span class="input-group-addon"><span class="fa fa-search" ></span>Batch Number</span>
+          <input type="text" ng-model="search.batchno">
+
+        </div>
+
+
+
+        <br>
+
+        <div class="input-group">
+          <span class="input-group-addon"><span class="fa fa-search" ></span>Expire Date</span>
+          <input type="text" ng-model="search.edate">
+
+        </div>
+
+      </div>
+      <table id="myTable" class="display table" width="100%" >
+        <thead>
+          <tr>
+            <th>Drug Category</th>
+            <th>Drug Name</th>
+            <th>Drug Type</th>
+            <th>Batch Number</th>
+            <th>Expire Date</th>
+            <th>Quantity</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat = " batch in batches | filter : search " class="success">
+            <td>{{batch.dcat}}</td>
+            <td>{{batch.dname}}</td>
+            <td>{{batch.dtype}}</td>
+            <td>{{batch.batchno}}</td>
+            <td>{{batch.edate |date :'yyyy-MM-dd'}}</td>
+            <td>{{batch.quantity}}</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

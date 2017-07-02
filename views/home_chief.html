@@ -1,0 +1,72 @@
+<div ng-controller="homeChiefController" id="wrapper" class="mainBody">
+  <div ng-include="'partials/navigation_chief.html'"></div>
+  <div id="page-wrapper" onload="startTime()">
+    <div class="container-fluid">
+      <h1>Main Home Body</h1>
+      <div class="col-md-9 home-dd">
+          <div class="col-md-6 weather-panel">
+                  <div class="panel">
+
+                            <div class="weather clear">
+
+                          </div>
+
+                      <div class="panel-heading">
+                        <div class="degree font-red">27°</div>
+                        <div class="icon">
+                          <canvas id="weather-now" width="96" height="96"></canvas>
+                        </div>
+                              <h4 class="panel-title font-bold text-center">Head Office,<br>Battaramulla</h4>
+                      </div>
+                  </div>
+          </div>
+          <div class="col-md-6 weather-panel2">
+            <div class="row col-md-4">
+              <div class="panel-heading right-part">
+                    &nbsp;
+              </div>
+            </div>
+              <div class="panel col-md-8">
+                      <div class="row weather no-padding">
+
+                          <div class="col-md-5 col-sm-5 text-center red-bgb">
+                            <br>
+                              <canvas class="mt15" id="weather-monday" width="64" height="64"></canvas>
+                              <h5 class="uppercase font-bold font-white">SLIIT</h5>
+                          </div>
+                          <div class="panel-heading  text-right">
+                            <div class="degree font-red">25°</div>
+                                <p class="text-muted uppercase s12">Pharmacy</p>
+                          </div>
+                      </div>
+
+              </div>
+
+              <div class="row col-md-4">
+                <div class="panel-heading right-part2">
+                  &nbsp;
+                </div>
+              </div>
+                      <div class="panel col-md-8">
+                            <div class="row weather no-padding">
+                                <div class="col-md-5 col-sm-5 text-center red-bg">
+                                  <br>
+                                        <canvas class="mt15" id="weather-tuesday" width="64" height="64"></canvas>
+                                        <h5 class="uppercase font-bold font-white">Rajagiriya</h5>
+                                </div>
+                                <div class="panel-heading text-right">
+                                  <div class="degree font-red">27°</div>
+                                          <p class="text-muted uppercase s12">Pharmacy</p>
+                                </div>
+                              </div>
+
+                      </div>
+
+
+            </div>
+          </div><!-- End -->
+    </div><!-- Container Fluid-->
+</div>
+<script>
+
+</script>

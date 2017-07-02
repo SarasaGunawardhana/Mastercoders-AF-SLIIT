@@ -1,0 +1,200 @@
+<div ng-controller="prescriptionController" id="wrapper"  >
+  <div ng-include="'partials/navigation_Chief.html'"></div>
+  <br>
+  <br>
+  <div class="container" >
+    <form class="well form-horizontal WOW bounceIn" name="supForm">
+      <fieldset>
+        <!-- Form Name -->
+        <legend><center><h2><b>PRESCRIPTION DETAILS</b></h2></center></legend><br>
+
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Patient ID</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input ng-model="prescription.patientid" id="patientid" placeholder="Patient ID" class="form-control"  type="text" required>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Drug Category</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <select id="category" name="category"   class="form-control selectpicker" ng-model="prescription.category"   >
+                <option value="">Select Drug Category </option>
+                <option>Narcotics</option>
+                <option>Drug used in the treatment of injections</option>
+                <option >Drug used in the treatment of Cardiovascular system </option>
+
+              </select>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Drug Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <select id="discription" name="discription"  class="form-control selectpicker" ng-model="prescription.discription"  >
+                <option value="">Select Drug Name </option>
+                <option>Afrin</option>
+                <option>Afrin Latest</option>
+                <option >Afrin Test</option>
+                <option >LOOL</option>
+                <option >Captoprill</option>
+
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Drug Type</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input ng-model="prescription.drugtype"   id="drugtype" placeholder="Drug type" class="form-control"  type="text" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Dosage</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input ng-model="prescription.dosage" id="dosage" placeholder="Dosage" class="form-control"  type="text" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Frequency</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input ng-model="prescription.frequency" id="frequency" placeholder="Frequency" class="form-control"  type="text" required >
+            </div>
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Period</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input ng-model="prescription.period" id="period" placeholder="Period" class="form-control"  type="text" required >
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-6 col-md-offset-5"><br>
+            <button type="submit" ng-click="pquantity(prescription)" class="btn btn-warning" >Calculate Quantity <span class="fa fa-fw fa-send"></span></button>
+
+          </div>
+
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" >Quantity</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                <input ng-model="prescription.prescriptionquantity" id="prescriptionquantity" placeholder="quantity" class="form-control"  type="text" required >
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" >Date</label>
+            <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                <input ng-model="prescription.prescriptiondate" id="prescriptiondate" placeholder="Date" class="form-control"  type="date" required >
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-6 col-md-offset-5"><br>
+              <button type="submit" ng-click="addPrescription(prescription)" class="btn btn-warning" >SUBMIT <span class="fa fa-fw fa-send"></span></button>
+              <button class="btn btn-primary" ng-click='updatePrescription(prescription._id,prescription)'>UPDATE<span class="fa fa-fw fa-send"></span></button>
+              <button class="btn btn-info" ng-click='clear()'>CLEAR<span class="fa fa-fw fa-send"></span></button>
+            </div>
+          </div>
+
+        </fieldset>
+      </form>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="container" >
+      <div class=" well table-responsive">
+        <div style="width:40%;padding-bottom:30px;">
+          <div class="input-group">
+            <span class="input-group-addon"><span class="fa fa-search" ></span></span>
+            <!--<input type="text" id="Searchprescription" placeholder="Search by  ID" class="form-control" data-ng-model="prescription.ppreid"/>-->
+            <input type="text" id="prescriptionSearch" placeholder="Search by Patient ID" class="form-control" data-ng-model="search.patientid">
+          </div>
+
+        </div>
+        <table id="myTable" class="display table" width="100%" >
+          <thead>
+            <tr>
+
+              <th>Patient ID</th>
+              <th>Drug Category</th>
+              <th>Drug Discription</th>
+              <th>Drug Type</th>
+              <th>Dosage</th>
+              <th>Frequency</th>
+              <th>Period</th>
+              <th>Quantity</th>
+              <th>Date</th>
+
+
+            </tr>
+          </thead>
+          <tbody>
+            <!--  <tr ng-repeat = " prescription in prescriptions | orderBy:"sid" | orderBy:"1" | filter:prescription.ppreid" class="success">-->
+            <tr ng-repeat = " prescription in prescriptions  | orderBy:'prescriptiondate' | orderBy:'l' | filter:search " class="success">
+
+              <td>{{prescription.patientid}}</td>
+              <td>{{prescription.category}}</td>
+              <td>{{prescription.discription}}</td>
+              <td>{{prescription.drugtype}}</td>
+              <td>{{prescription.dosage}}</td>
+              <td>{{prescription.frequency}}</td>
+              <td>{{prescription.period}}</td>
+              <td>{{prescription.prescriptionquantity}}</td>
+              <td>{{prescription.prescriptiondate}}</td>
+
+              <td><button class="btn btn-success" type="button" ng-click="editPrescription(prescription._id)">Edit</button> &nbsp;&nbsp;
+                <button class="btn btn-danger" type="button" ng-click="deletePrescription(prescription._id)">Delete</button></td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>

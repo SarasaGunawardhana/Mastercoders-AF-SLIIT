@@ -1,0 +1,129 @@
+<div ng-controller="supplierController" id="wrapper">
+  <div ng-include="'partials/navigation_Chief.html'"></div>
+  <!--<link href="/css/fresh-bootstrap-table.css" rel="stylesheet" /> -->
+  <br>
+  <br>
+  <div class="container" >
+    <form class="well form-horizontal WOW bounceIn" name="supForm">
+      <fieldset>
+        <legend><center><h2><b>ADD SUPPLIER</b></h2></center></legend><br>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">First Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input  id="fname" pattern="[A-Za-z]{3,}" placeholder="values must be strings with atleast 3 letters" class="form-control"  type="text" required ng-model="supplier.fname">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Middle Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input  id="mname" pattern="[A-Za-z]{3,}" placeholder="Middle Name *opptinal" class="form-control"  type="text" ng-model="supplier.mname">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Last Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input  id="lname" pattern="[A-Za-z]{3,}"  placeholder="values must be strings with atleast 3 letters"  class="form-control"  type="text" required ng-model="supplier.lname" >
+            </div>
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">E-Mail</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
+              <input  id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="xxxxx@xxx.xxx" class="form-control"  type="email" required ng-model="supplier.email">
+              </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Address</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-address"></i></span>
+              <textarea pattern="[A-Za-z]{3,}" ng-model="supplier.address" id="address"  class="form-control" placeholder="message *opptinal"></textarea>
+            </div>
+          </div>
+        </div>
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Contact No.</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-phone"></i></span>
+              <input ng-model="supplier.contactno" id="contactno" placeholder="Phone number" maxlength="10" pattern="[0-9]{10}" class="form-control" type="text" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-6 col-md-offset-4"><br>
+            <button type="submit" ng-click="addSupplier(supplier)" class="btn btn-warning" >SUBMIT <span class="fa fa-fw fa-send"></span></button>
+            <button class="btn btn-primary" ng-click='updateSupplier(supplier._id,supplier)'>UPDATE<span class="fa fa-fw fa-send"></span></button>
+            <button class="btn btn-info" ng-click='clear()'>CLEAR<span class="fa fa-fw fa-send"></span></button>
+          </div>
+        </div>
+
+      </fieldset>
+    </form>
+
+
+  </div>
+  <br>
+  <br>
+
+  <div class="container" >
+
+    <div class=" well table-responsive" >
+      <div style="width:40%;padding-bottom:30px;">
+        <div class="input-group">
+          <span class="input-group-addon"><span class="fa fa-search" ></span></span>
+          <input type="text" id="supplierSearch" placeholder="Search by Supplier First Name" class="form-control" data-ng-model="search.fname" />
+          <!-- onkeyup="filterView('fname','supplierSearch')" -->
+        </div>
+
+      </div>
+    <!-- <button type="button" name="button" ng-click="pdf()" id="create_pdf">PDF</button> -->
+      <table  class="display table" width="100%" >
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Contact No</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat = " supplier in suppliers | orderBy:'fname' | orderBy:'l' | filter:search" class="success">
+            <td>{{supplier.fname}}</td>
+            <td>{{supplier.lname}}</td>
+            <td>{{supplier.email}}</td>
+            <td>{{supplier.address}}</td>
+            <td>{{supplier.contactno}}</td>
+            <td><button class="btn btn-success" type="button" ng-click="editSup(supplier._id)">Edit</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <button class="btn btn-danger" type="button" ng-click="deleteSupplier(supplier._id)">Delete</button></td>
+          </tr><!--ng-click="viewSupplierBy(supplier._id)" ng-href="supplier/{{supplier._id}}"-->
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+
+</div>

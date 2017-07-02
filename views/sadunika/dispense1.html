@@ -1,0 +1,63 @@
+<div ng-controller="prescriptionController" id="wrapper"  >
+  <div ng-include="'partials/navigation_assistance.html'"></div>
+  <!--<link href="/css/fresh-bootstrap-table.css" rel="stylesheet" /> -->
+  <br>
+  <br>
+
+
+  <div class="container" >
+    <div class=" well table-responsive">
+      <div style="width:40%;padding-bottom:30px;">
+        <div class="input-group">
+          <span class="input-group-addon"><span class="fa fa-search" ></span></span>
+      <input type="text" id="prescriptionSearch" placeholder="Search by Patient ID" class="form-control" onkeyup="filterView('ppid','prescriptionSearch')"/>
+        </div>
+
+      </div>
+
+      <table id="myTable" class="display table" width="100%" >
+        <thead>
+          <tr>
+            <th>Patient ID</th>
+            <th>Date</th>
+            <th>Drug Category</th>
+            <th>Drug Discription</th>
+            <th>Quantity</th>
+            <th></th>
+            <th>Stock quantity</th>
+            <th></th>
+            <th>Available quantity</th>
+            <th>Status</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat = " prescription in prescriptions " class="success">
+
+            <td>{{prescription.patientid}}</td>
+            <td>{{prescription.prescriptiondate}}</td>
+            <td>{{prescription.category}}</td>
+            <td>{{prescription.discription}}</td>
+            <td>{{prescription.prescriptionquantity}}</td>
+
+
+            <td><button type="submit" ng-click="stockquantity(prescription)" class="btn btn-warning" >Stock</button> &nbsp;&nbsp;
+            </td>
+
+            <td>{{prescription.stockquantity}}</td>
+
+            <td><button type="submit" ng-click="availablequantity(prescription)" class="btn btn-warning" >Available</button> &nbsp;&nbsp;
+            </td>
+
+           <td>{{prescription.availablequantity}}</td>
+           <td><button class="btn btn-primary" ng-click='dispense(prescription._id,prescription)'>Dispense<span class="fa fa-fw fa-send"></span></button> &nbsp;&nbsp;</td>
+
+
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+  </div>

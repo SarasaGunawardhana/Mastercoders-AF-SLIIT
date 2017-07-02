@@ -1,0 +1,125 @@
+<div ng-controller="requestController" id="wrapper"  >
+  <div ng-include="'partials/navigation_assistance.html'"></div>
+  <br>
+  <br>
+      <div class="container" >
+        <form class="well form-horizontal WOW bounceIn" name="supForm">
+          <fieldset>
+            <!-- Form Name -->
+            <legend><center><h2><b>REQUEST DRUG DETAILS</b></h2></center></legend><br>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" >Drug Name</label>
+      <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+          <select id="drugname" name="drugname"  class="form-control selectpicker" ng-model="request.drugname"  >
+            <option value="">Select Drug Name </option>
+            <option>Afrin</option>
+            <option>Afrin Latest</option>
+            <option >Afrin Test</option>
+            <option >LOOL</option>
+            <option >Captoprill</option>
+
+          </select>
+        </div>
+      </div>
+    </div>
+
+<!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label">Department</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                  <select id="department" name="department"   class="form-control selectpicker" ng-model="request.department"   >
+                    <option value="">Select Department </option>
+                    <option>IPD Department</option>
+                    <option>OPD Department</option>
+
+                  </select>
+
+                </div>
+              </div>
+            </div>
+
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" >Order quantity</label>
+    <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+        <input ng-model="request.requestedquantity" id="requestedquantity" placeholder="Order quantity" class="form-control"  type="text" required>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" >Date</label>
+                      <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                          <input ng-model="request.date" id="date" placeholder="Date" class="form-control"  type="date" required >
+                        </div>
+                      </div>
+                    </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label"></label>
+              <div class="col-md-6 col-md-offset-5"><br>
+                <button type="submit" ng-click="addRequest(request)" class="btn btn-warning" >SUBMIT <span class="fa fa-fw fa-send"></span></button>
+                 <button class="btn btn-info" ng-click='clear()'>CLEAR<span class="fa fa-fw fa-send"></span></button>
+              </div>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+
+      <br>
+      <br>
+
+      <div class="container" >
+        <div class=" well table-responsive">
+          <div style="width:40%;padding-bottom:30px;">
+            <div class="input-group">
+              <span class="input-group-addon"><span class="fa fa-search" ></span></span>
+          <input type="text" id="Searchrequest" placeholder="Search by Drug name" class="form-control" onkeyup="filterView('drugname','Searchrequest')"/>
+            </div>
+
+          </div>
+          <table id="myTable" class="display table" width="100%" >
+            <thead>
+              <tr>
+                <th>Drug Name</th>
+                <th>Department</th>
+                <th>Order Quantity</th>
+                <th>Date</th>
+
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat = " request in requests " class="success">
+                <td>{{request.drugname}}</td>
+                <td>{{request.department}}</td>
+                <td>{{request.requestedquantity}}</td>
+                <td>{{request.date}}</td>
+
+
+
+                <td>
+                <button class="btn btn-danger" type="button" ng-click="deleteRequest(request._id)">Delete</button></td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>

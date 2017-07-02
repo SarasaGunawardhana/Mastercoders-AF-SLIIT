@@ -1,0 +1,168 @@
+<div ng-controller="drugController" id="wrapper"  >
+  <div ng-include="'partials/navigation_Chief.html'"></div>
+  <br>
+  <br>
+      <div class="container" >
+        <form class="well form-horizontal WOW bounceIn" name="supForm">
+          <fieldset>
+            <!-- Form Name -->
+            <legend><center><h2><b>DRUG DETAILS</b></h2></center></legend><br>
+            <!-- Text input
+            <div id="success"></div>
+            -->
+            <div class="form-group">
+              <label class="col-md-4 control-label">Drug Category</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                  <select id="dcat" name="dcat"   class="form-control selectpicker" ng-model="drug.dcat"   >
+                    <option value="">Select Drug Category </option>
+                    <option>Narcotics</option>
+                    <option>Drug used in the treatment of injections</option>
+                    <option >Drug used in the treatment of Cardiovascular system </option>
+
+                  </select>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Drug Name</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                  <select id="dname" name="dname"  class="form-control selectpicker" ng-model="drug.dname"  >
+                    <option value="">Select Drug Name </option>
+                    <option>Afrin</option>
+                    <option>Afrin Latest</option>
+                    <option >Afrin Test</option>
+                    <option >LOOL</option>
+                    <option >Captoprill</option>
+
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Drug Type</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                  <input ng-model="drug.dtype"     id="dtype" placeholder="Drug type" class="form-control"  type="text" required>
+                </div>
+              </div>
+            </div>
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Price</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                  <input ng-model="drug.dprice" id="dprice" placeholder="Rs" class="form-control"  type="number" step="any" min="0" required >
+                </div>
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Reorder Level</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                  <input ng-model="drug.dreorder" id="dreorder" placeholder="Reorder Level" class="form-control"  type="number" min="0" required >
+
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Danger Level</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                  <input ng-model="drug.ddanger" id="ddanger" placeholder="Danger Level" class="form-control"  type="number" min="0" required >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Remarks</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                  <input ng-model="drug.dremark" id="dremark" placeholder="Remarks" class="form-control"  type="text" required >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label"></label>
+              <div class="col-md-6 col-md-offset-5"><br>
+                <button type="submit" ng-click="addDrug(drug)" class="btn btn-warning" >SUBMIT <span class="fa fa-fw fa-send"></span></button>
+                <button class="btn btn-primary" ng-click='updateDrug(drug._id,drug)'>UPDATE<span class="fa fa-fw fa-send"></span></button>
+                 <button class="btn btn-info" ng-click='clear()'>CLEAR<span class="fa fa-fw fa-send"></span></button>
+              </div>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+
+      <br>
+      <br>
+
+      <div class="container" >
+        <div class=" well table-responsive">
+          <div style="width:40%;padding-bottom:30px;">
+            <div class="input-group">
+              <span class="input-group-addon"><span class="fa fa-search" ></span>Drug Name</span>
+              <input type="text" ng-model="search.dname">
+            </div>
+
+            <br>
+
+            <div class="input-group">
+              <span class="input-group-addon"><span class="fa fa-search" ></span>Drug Category</span>
+              <input type="text" ng-model="search.dcat">
+
+            </div>
+
+          </div>
+          <table id="myTable" class="display table" width="100%" >
+            <thead>
+              <tr>
+                <th>Drug Category</th>
+                <th>Drug Name</th>
+                <th>Drug Type</th>
+                <th>Price</th>
+                <th>Reorder Level</th>
+                <th>Danger Level</th>
+                <th>Remarks</th>
+                <th>Action</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat = " drug in drugs | filter: search " class="success">
+                <td>{{drug.dcat}}</td>
+                <td>{{drug.dname}}</td>
+                <td>{{drug.dtype}}</td>
+                <td>{{drug.dprice}}</td>
+                <td>{{drug.dreorder}}</td>
+                <td>{{drug.ddanger}}</td>
+                <td>{{drug.dremark}}</td>
+                <td><a ng-href="#!/batch/{{drug._id}}">Add Batch</a></td>
+                <td><button class="btn btn-success" type="button" ng-click="editDrug(drug._id)">Edit</button> &nbsp;&nbsp;
+                <button class="btn btn-danger" type="button" ng-click="deleteDrug(drug._id)">Delete</button></td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
+    </div>

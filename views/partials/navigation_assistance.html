@@ -1,0 +1,74 @@
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" onload="startTime()">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" ng-click="homeAssistance()">PHARMACY</a>
+
+    </div>
+
+    <!-- Top Menu Items -->
+    <ul class="nav navbar-nav navbar-center">
+      <li class="datetime" id="datetimeClock">
+
+      </li>
+    </ul>
+
+    <ul class="nav navbar-right top-nav">
+        <li class="dropdown">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><img src="" alt="Hi! {{user.fname}} {{user.lname}}" width="20px" height="20px"/>  <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li>
+                  <a href="#!/profile"><i class="fa fa-fw fa-user"></i> Profile</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a ng-click="logout()"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+    <div ng-include="'partials/sidebars/sidebar_assistance.html'"></div>
+    <!-- /.navbar-collapse -->
+</nav>
+<script>
+function startTime() {
+var today = new Date();
+var d = today.getDate();
+var month = today.getMonth();
+var year = today.getFullYear();
+var h = today.getHours();
+var m = today.getMinutes();
+var s = today.getSeconds();
+m = checkTime(m);
+s = checkTime(s);
+
+var monthArr = new Array();
+monthArr[0] = "Jan";
+monthArr[1] = "Feb";
+monthArr[2] = "Mar";
+monthArr[3] = "Apr";
+monthArr[4] = "May";
+monthArr[5] = "June";
+monthArr[6] = "July";
+monthArr[7] = "Aug";
+monthArr[8] = "Sep";
+monthArr[9] = "Oct";
+monthArr[10] = "Nov";
+monthArr[11] = "Dec";
+
+document.getElementById('datetimeClock').innerHTML =
+d+" "+monthArr[month]+" "+year +" | "+ h + ":" + m + ":" + s;
+var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+if (i < 10) {i = "0" + i};  // add zero in front of numbers
+return i;
+}
+</script>

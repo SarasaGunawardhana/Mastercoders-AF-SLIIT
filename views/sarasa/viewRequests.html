@@ -1,0 +1,53 @@
+<div ng-controller="requestController" id="wrapper">
+  <div ng-include="'partials/navigation_Chief.html'"></div>
+  <br>
+  <br>
+  <div class="container" >
+    <div class=" well table-responsive" >
+      <div style="width:40%;padding-bottom:30px;">
+        <div class="input-group">
+          <span class="input-group-addon"><span class="fa fa-search" ></span></span>
+          <input type="text" id="requestSearch" placeholder="Search by drugname" class="form-control" data-ng-model="search"/>
+        </div>
+
+      </div>
+      <table  class="display table" width="100%" >
+        <thead>
+          <tr>
+            <th>Drug Name</th>
+            <th>Requested Quantity</th>
+            <!--<th>Available Quantity</th>-->
+            <th>Date</th>
+            <th>Department</th>
+            <th>Status</th>
+            <th>Approved Quantity</th>
+            <th>Approve</th>
+          </tr>
+        </thead>
+          <tbody>
+            <tr ng-repeat = " request in requests | orderBy:'drugname' | orderBy:'l' | filter:search" class="success">
+              <div ng-if="request.status == pending">
+                <td ng-model="approve.drugname">{{request.drugname}}</td>
+                <td ng-model="approve.requestedquantity">{{request.requestedquantity}}</td>
+              <!--  <td ng-model="approve.available">{{request.drug.quantity}}</td>-->
+                <td>{{request.date}}</td>
+                <td>{{request.department}}</td>
+                <td ng-model="approve.status">{{request.status}}</td>
+                <td><input type="number" name="quantity" ng-model="approve.approvedquantity" value="{{request.requestedquantity}}" min="1" max="1000"></td>
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <input ng-model="approve.newstatus" type="checkbox" aria-label="...">
+                    </span>
+                  </div>
+                </td>
+              </div>
+
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-success" type="button" ng-click="approveReq(request.drugs._id,request._id,approve)">Approve</button>
+
+      </div>
+    </div>
+  </div>

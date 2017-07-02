@@ -1,0 +1,199 @@
+<div ng-controller="loginController">
+  <br>
+  <br>
+  <div class="container" >
+    <a ng-click="back()" class="btn btn-info" href="javascript:">LogOut</a>
+    <form class="well form-horizontal WOW bounceIn" name="supForm">
+      <fieldset>
+        <legend><center><h2><b>Manage User</b></h2></center></legend><br>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">First Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input  id="fname" pattern="[A-Za-z]{3,}" placeholder="values must be strings with atleast 3 letters" class="form-control"  type="text" required ng-model="user.fname">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Middle Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input  id="mname" pattern="[A-Za-z]{3,}" placeholder="Middle Name *opptinal" class="form-control"  type="text" ng-model="supplier.mname">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Last Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input  id="lname" pattern="[A-Za-z]{3,}"  placeholder="values must be strings with atleast 3 letters"  class="form-control"  type="text" required ng-model="user.lname" >
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">National Identy Card</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-phone"></i></span>
+              <input ng-model="user.NIC" id="NIC" placeholder="National Identy Card" maxlength="10"  class="form-control" type="text" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Date of Birth:</label>
+          <div class="col-md-4 inputGroupContainer">
+          <div class='input-group date' id='datetimepicker1'>
+                  <input type='text' class="form-control" placeholder="Date of birth" id="dob" required/>
+                  <span class="input-group-addon">
+                      <span class="fa fa-fw fa-calendar"></span>
+                  </span>
+          </div>
+        </div>
+        </div>
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Address</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-address"></i></span>
+              <textarea pattern="[A-Za-z]{3,}" ng-model="user.address" id="address"  class="form-control" placeholder="message *opptinal"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">E-Mail</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
+              <input  id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="xxxxx@xxx.xxx" class="form-control"  type="email" required ng-model="user.email">
+              </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Select user type</label>
+          <div class="col-md-4 inputGroupContainer">
+          <select id="sp" class="form-control"  ng-model="user.type" required>
+            <option value="0"></option>
+            <option value="admin">Admin</option>
+            <option value="chief">Chief</option>
+            <option value="assistance">Assistance</option>
+            <option value="docter">Docter</option>
+          </select>
+          </div>
+        </div>
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Username</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input  id="username" pattern="[A-Za-z]{3,}" placeholder="values must be strings with atleast 3 letters" class="form-control"  type="text" required ng-model="user.username">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" >password</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input  id="password"  placeholder="Passowrd" class="form-control"  type="password" ng-model="user.password">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Confirm password</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input  id="confirm"  placeholder="Passowrd" class="form-control"  type="text" ng-model="user.confirm">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-6 col-md-offset-4"><br>
+            <button type="submit" ng-click="addUser(user)" class="btn btn-warning" >SUBMIT <span class="fa fa-fw fa-send"></span></button>
+            <input type="reset" name="reset" value="CLEAR" class="btn btn-success btn-lg" />
+          </div>
+        </div>
+
+      </fieldset>
+    </form>
+
+
+  </div>
+  <br>
+  <br>
+
+  <div class="container" >
+
+    <div class=" well table-responsive" >
+      <div style="width:40%;padding-bottom:30px;">
+        <div class="input-group">
+          <span class="input-group-addon"><span class="fa fa-search" ></span></span>
+          <input type="text" id="userSearch" placeholder="Search by user First Name" class="form-control" data-ng-model="search" />
+          <!-- onkeyup="filterView('fname','supplierSearch')" -->
+        </div>
+
+      </div>
+    <!-- <button type="button" name="button" ng-click="pdf()" id="create_pdf">PDF</button> -->
+      <table  class="display table" width="100%" >
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>NIC</th>
+            <th>Email</th>
+            <th>User Type</th>
+            <th>Username</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat = " user in users | orderBy:'fname' | orderBy:'l' | filter:search" class="success">
+            <td>{{user.fname}}</td>
+            <td>{{user.lname}}</td>
+            <td>{{user.NIC}}</td>
+            <th>{{user.email}}</th>
+            <td>{{user.type}}</td>
+            <td>{{user.username}}</td>
+            <td><button class="btn btn-danger" type="button" ng-click="deleteuser(user._id)" onclick="filterAssets()">Delete</button></td>
+          </tr><!--ng-click="viewSupplierBy(supplier._id)" ng-href="supplier/{{supplier._id}}"-->
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+
+</div>
+<script>
+function filterAssets(){
+
+  $("#confirm").prop("disabled", true);
+  $("#password").prop("disabled", true);
+
+}
+function filterRemove(){
+
+  $("#password").removeAttr("disabled");
+    $("#confirm").removeAttr("disabled");
+
+}
+</script>

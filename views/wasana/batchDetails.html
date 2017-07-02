@@ -1,0 +1,250 @@
+<div ng-controller="batchController" id="wrapper"  >
+  <div ng-include="'partials/navigation_Chief.html'"></div>
+  <br>
+  <br>
+      <div class="container" >
+        <form class="well form-horizontal WOW bounceIn" name="supForm">
+          <fieldset>
+            <!-- Form Name -->
+            <legend><center><h2><b>DRUG BATCH DETAILS</b></h2></center></legend><br>
+            <!-- Text input
+            <div id="success"></div>
+            -->
+            <div class="form-group">
+              <label class="col-md-4 control-label"> Select Drug Category</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+
+                  <select id="dcat" name="dcat"   disabled="disabled" class="form-control selectpicker" ng-model="batch.dcat"   >
+                    <option value="">Select Drug Category </option>
+                    <option>Narcotics</option>
+                    <option>Drug used in the treatment of injections</option>
+                    <option >Drug used in the treatment of Cardiovascular system </option>
+
+                  </select>
+
+
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Drug Name</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+
+
+
+                  <select id="dname" name="dname"  disabled="disabled" class="form-control selectpicker" ng-model="batch.dname"   >
+                    <option value="">Select Drug Name </option>
+                    <option>Afrin</option>
+                    <option>Afrin Latest</option>
+                    <option >Afrin Test</option>
+                    <option >LOOL</option>
+                    <option >Captoprill</option>
+
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Drug Type</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                  <input ng-model="batch.dtype" id="dtype"    disabled="disabled" placeholder="Drug type" value="drug.dtype" class="form-control"  type="text" required>
+                </div>
+              </div>
+            </div>
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Batch Number</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                  <input ng-model="batch.batchno" id="batchno" placeholder="Batch Number" class="form-control"  type="text" required >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Content</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                  <select id="content" name="content"  class="form-control selectpicker" ng-model="batch.content"  >
+                    <option value="">Select Drug Content </option>
+                    <option>Tablets</option>
+                    <option>Liquid</option>
+
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Content Type</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                  <select id="contentType" name="contentType"  class="form-control selectpicker" ng-model="batch.contentType"  >
+                    <option value="">Select Content Type </option>
+                    <option>Card</option>
+                    <option>Bottle</option>
+
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Number of cartoons</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                  <input ng-model="batch.nofcartoons" id="nofcartoons" placeholder="should be numeric" class="form-control"  type="number" min="0" required >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Number Of Cards Per Cartoon</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                  <input ng-model="batch.nofcards" id="nofcards" placeholder="should be numeric" class="form-control"  type="number" min="0" required >
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" >Number Of Tablet Per Card</label>
+              <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                  <input ng-model="batch.noftablets" id="noftablets" placeholder="should be numeric" class="form-control"  type="number" min="0" required >
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="form-group">
+              <label class="col-md-4 control-label"></label>
+              <div class="col-md-6 col-md-offset-5"><br>
+                <button type="submit" ng-click="quantity(batch)" class="btn btn-primary" >Calculate Quantity <span class="fa fa-fw fa-send"></span></button>
+
+              </div>
+
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" >Quantity</label>
+                <div class="col-md-4 inputGroupContainer">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                    <input ng-model="batch.quantity" id="quantity"  disabled="disabled"  placeholder="quantity" class="form-control"  type="number" required >
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" >Manufacture Date</label>
+                <div class="col-md-4 inputGroupContainer">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                    <input ng-model="batch.mdate" id="mdate"  class="form-control"  type="date" required >
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4 control-label" >Expire Date</label>
+                <div class="col-md-4 inputGroupContainer">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+                    <input ng-model="batch.edate" id="edate" class="form-control"  type="date" required >
+
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-6 col-md-offset-5"><br>
+
+                  <button type="submit" ng-click="addBatch(batch)" class="btn btn-warning" >SUBMIT <span class="fa fa-fw fa-send"></span></button>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+
+      <br>
+      <br>
+
+      <div class="container" >
+        <div class=" well table-responsive">
+
+          <table id="myTable" class="display table" width="100%" >
+            <thead>
+              <tr>
+                <th>Drug Category</th>
+                <th>Drug Name</th>
+                <th>Drug Type</th>
+                <th>Batch No</th>
+                <th>Content</th>
+                <th>Content Type</th>
+                <th>Number of Cartoons</th>
+                <th>Number of Cards</th>
+                <th>Tablets per Cartoon</th>
+                <th>Quantity</th>
+                <th>Manufacture Date</th>
+                <th>Expire Date</th>
+                <th>Action</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat = " batch in drug.batches " class="success">
+                <td>{{batch.dcat}}</td>
+                <td>{{batch.dname}}</td>
+                <td>{{batch.dtype}}</td>
+                <td>{{batch.batchno}}</td>
+                <td>{{batch.content}}</td>
+                <td>{{batch.contentType}}</td>
+                <td>{{batch.nofcartoons}}</td>
+                <td>{{batch.nofcards}}</td>
+                <td>{{batch.noftablets}}</td>
+                <td>{{batch.quantity}}</td>
+                <td>{{batch.mdate | date :'yyyy-MM-dd'}}</td>
+                <td>{{batch.edate | date :'yyyy-MM-dd'}}</td>
+                <td>
+                <button class="btn btn-danger" type="button" ng-click="deleteBatch(batch._id)">Delete</button></td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+    </div>

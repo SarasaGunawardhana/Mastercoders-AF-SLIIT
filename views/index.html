@@ -1,0 +1,145 @@
+<!-- views/login.ejs -->
+<!doctype html>
+<html  >
+<head>  <!--   <base href="/">-->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/sb-admin.css" >
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- <link rel="stylesheet" href="/css/jquery.dataTables.min.css"> -->
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"  type="text/css">
+  <script src="js/jquery-2.2.3.min.js"></script>
+  <script src="js/angular.min.js"></script>
+  <script src="js/angular-route.min.js"></script>
+  <script src="../server/main.module.js"></script>
+  <script src="../server/main.route.js"></script>
+  <script src="../server/controllers/drug.controller.js"></script>
+  <script src="../server/controllers/main.controller.js"></script>
+  <script src="../server/controllers/request.controller.js"></script>
+  <script src="../server/controllers/prescription.controller.js"></script>
+  <script src="../server/services/main.service.js"></script>
+
+
+</head>
+
+<body ng-app="Pharmacy"  onhashchange="startTime()" onopen="startTime()" onwheel="startTime()"><!-- onload="startTime()"-->
+
+  <div ng-view ></div>
+
+
+
+
+
+  <script src="js/jquery-2.2.3.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/skyicons.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/moment.min.js"></script>
+  <script src="js/bootstrap-datetimepicker.min.js"></script>
+
+  <div id="dialogoverlay"></div>
+  <div id="dialogbox">
+    <div>
+      <div id="dialogboxhead"></div>
+      <div id="dialogboxbody"></div>
+      <div id="dialogboxfoot"></div>
+    </div>
+  </div>
+  <script>
+
+  function startTime() {
+    //alert();
+    var today = new Date();
+    var d = today.getDate();
+    var month = today.getMonth();
+    var year = today.getFullYear();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+
+    var monthArr = new Array();
+    monthArr[0] = "Jan";
+    monthArr[1] = "Feb";
+    monthArr[2] = "Mar";
+    monthArr[3] = "Apr";
+    monthArr[4] = "May";
+    monthArr[5] = "June";
+    monthArr[6] = "July";
+    monthArr[7] = "Aug";
+    monthArr[8] = "Sep";
+    monthArr[9] = "Oct";
+    monthArr[10] = "Nov";
+    monthArr[11] = "Dec";
+
+    document.getElementById('datetimeClock').innerHTML =
+    d+" "+monthArr[month]+" "+year +" | "+ h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+  }
+  function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers
+    return i;
+  }
+
+
+  function cAlert(){
+
+    this.render = function(dialog){
+      var winW = window.innerWidth;
+      var winH = window.innerHeight;
+      var dialogoverlay = document.getElementById('dialogoverlay');
+      var dialogbox = document.getElementById('dialogbox');
+      dialogoverlay.style.display = "block";
+      dialogoverlay.style.height = winH+"px";
+      dialogbox.style.left = (winW/2) - (550 * .5)+"px";
+      dialogbox.style.top = "100px";
+      dialogbox.style.display = "block";
+      document.getElementById('dialogboxhead').innerHTML = "Pharmacy : Alert";
+      document.getElementById('dialogboxbody').innerHTML = dialog;
+      document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Alert.ok()">OK</button>';
+    }
+    this.ok = function(){
+      document.getElementById('dialogbox').style.display = "none";
+      document.getElementById('dialogoverlay').style.display = "none";
+      exit();
+    }
+  }
+  var Alert = new cAlert();
+/*
+  var today = new Skycons({
+    "color": '#51566c',
+    "resizeClear": true
+  });
+  today.set("weather-now", "partly-cloudy-day");
+  today.play();
+
+  //monday
+  var monday = new Skycons({
+    "color": '#fff',
+    "resizeClear": true
+  });
+  monday.set("weather-monday", "rain");
+  monday.play();
+
+  //tuesday
+  var tuesday = new Skycons({
+    "color": '#fff',
+    "resizeClear": true
+  });
+  tuesday.set("weather-tuesday", "partly-cloudy-day");
+  tuesday.play();
+*/
+  </script>
+  <script>
+  new WOW().init();
+  </script>
+
+
+</body>
+</html>

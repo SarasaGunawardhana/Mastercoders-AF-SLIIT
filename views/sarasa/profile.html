@@ -1,0 +1,91 @@
+<div ng-controller="profileController" id="wrapper"  >
+  <div ng-include="'partials/navigation_Chief.html'"></div>
+  <br>
+  <br>
+
+  <div class="container">
+      <h1>profile</h1>
+    <form class="well form-horizontal WOW bounceIn" name="supForm">
+      <fieldset>
+        <h2>Hi ! {{user.fname}} {{user.lname}}</h2>
+        <div class="form-group">
+          <label class="col-md-4 control-label">First Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input  id="fname" placeholder="First Name" class="form-control" value="{{user.fname}}"  type="text" required ng-model="user.fname">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Middle Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input ng-model="user.mname" id="mname" placeholder="Middle Name" value="{{user.mname}}" class="form-control"  type="text" >
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Last Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input ng-model="user.lname" id="lname" placeholder="Last Name" value="{{user.lname}}" class="form-control"  type="text" required >
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" >NIC</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input ng-model="user.NIC" id="nic" placeholder="National Identy Card" class="form-control" value="{{user.NIC}}" type="text" required >
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label">Date of Birth:</label>
+          <div class="col-md-4 inputGroupContainer">
+          <div class='input-group date' id='datetimepicker1'>
+                  <input type='text' class="form-control" value="{{user.dob}}" placeholder="{{user.dob}}" id="dop" required/>
+                  <span class="input-group-addon">
+                      <span class="fa fa-fw fa-calendar"></span>
+                  </span>
+          </div>
+        </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Address</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input ng-model="user.address" id="address" placeholder="Address" class="form-control" value="{{user.address}}" type="text" required >
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Email</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+              <input ng-model="user.email" id="email" placeholder="Email" class="form-control" value="{{user.email}}" type="text" required >
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-6 col-md-offset-4"><br>
+            <button type="submit" ng-click="updateUser(user._id,user)" class="btn btn-primary" >SUBMIT <span class="fa fa-fw fa-send"></span></button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+
+  </div>
+</div>
